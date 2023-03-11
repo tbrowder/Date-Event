@@ -1,6 +1,8 @@
 use Test;
 use Date::Event;
 
-pass "replace me";
+use-ok "Date::Event";
+
+#pass "replace me";
 
 done-testing;

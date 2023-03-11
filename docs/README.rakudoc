@@ -14,7 +14,37 @@ use Date::Event;
 
 =head1 DESCRIPTION
 
-B<Date::Event> is ...
+B<Date::Event> is a class that provides basic attributes to describe
+an event occurring on a particular C<Date>. It is suitable for multiple
+instances on a C<Date> and is defined as follows:
+
+=begin code
+enum EType (
+    Birth       => 1, 
+    Christening => 2,
+    Baptism     => 3,
+    BarMitzvah  => 4,
+    BatMitzvah  => 5,
+    Graduation  => 6,
+    Wedding     => 7,
+    Anniversary => 8,
+    Retirement  => 9,
+    Death       => 10,
+
+    Holiday     => 100,
+    Other       => 200,
+);
+
+class Date::Event {
+    has $.id;
+    has $.name;
+    has $.short-name;
+    has EType $.type;
+    has Date $.date;
+    has Date $.date-observed;
+    has $.notes;
+}
+=end code
 
 =head1 AUTHOR
 
