@@ -1,0 +1,25 @@
+{
+  "auth": "zef:tbrowder",
+  "authors": [
+    "Tom Browder"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "Provides a class suitable for use with calendars or any Raku program associated with the Raku Date type",
+  "license": "Artistic-2.0",
+  "name": "Date::Event",
+  "perl": "6.d",
+  "provides": {
+    "Date::Event": "lib/Date/Event.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "",
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
