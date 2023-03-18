@@ -15,7 +15,7 @@ jobs:
         os:
           - windows-latest
         raku-version:
-          - '2022.07'
+          - 'latest'
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -27,4 +27,4 @@ jobs:
       - name: Install App::Prove6
         run: zef install --/test App::Prove6
       - name: Run Tests
-        run: prove6 -I. t
+        run: export TEST_JOBS=1; prove6 -I. t
