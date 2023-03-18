@@ -41,6 +41,16 @@ DESCRIPTION
         has Date $.date;
         has Date $.date-observed;
         has $.notes;
+
+        # A default event is normally set on a certain date.
+        # Many holidays are an exception in that they are calculated
+        # based on on or more date criteria or conversion
+        # from another calendar (e.g., from Jewish to Gregorian).
+        has Bool $.is-calculated = False; 
+    }
+
+    method is-calc {
+        $!is-calculated = True
     }
 
 AUTHOR

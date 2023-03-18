@@ -1,6 +1,10 @@
 Revision history for Date-Event
 
 {{$NEXT}}
+    - Add a Boolean attribute, '$is-calculated',  indicating 
+      whether the event's date is caclulated or fixed
+      (default: False). Add a method, 'is-calc', for the user 
+      to change the value of that attribute.
 
 0.0.2  2023-03-13T05:21:23-05:00
     - Add tags

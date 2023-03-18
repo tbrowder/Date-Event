@@ -23,3 +23,8 @@ has EType $.type;
 has Date $.date;
 has Date $.date-observed;
 has $.notes;
+has Bool $.is-calculated = False; #= Default is a directed or traditional observed date
+
+method is-calc {
+    $!is-calculated = True
+}
