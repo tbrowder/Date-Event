@@ -27,4 +27,4 @@ jobs:
       - name: Install App::Prove6
         run: zef install --/test App::Prove6
       - name: Run Tests
-        run: export TEST_JOBS=1; prove6 -I. t
+        run: %*ENV<TEST_JOBS>=1; prove6 -I. t
