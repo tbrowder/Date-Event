@@ -1,6 +1,8 @@
 Revision history for Date-Event
 
 {{$NEXT}}
+
+0.0.4  2024-01-29T15:45:54-06:00
     - Change the Windows test to use zef instead of the broken Windows
         version of prove6
     - Add tests
