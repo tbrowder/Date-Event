@@ -57,7 +57,7 @@ method is-calculated(Bool $v?) {
         $!is-calculated = $v
     }
     else {
-        return 
+        return $!is-calculated
     }
 }
 

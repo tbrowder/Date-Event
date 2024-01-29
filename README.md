@@ -55,7 +55,7 @@ DESCRIPTION
             $!is-calculated = $v
         }
         else {
-            return 
+            return $!is-calculated
         }
     }
 
