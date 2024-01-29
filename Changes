@@ -6,6 +6,7 @@ Revision history for Date-Event
     - Add tests
     - Rename method 'is-calc', make it require a Bool value
       + test for a Bool entry, die on failure
+    - Update copyright year in README
 
 0.0.3  2023-03-18T06:11:35-05:00
     - Add a Boolean attribute, '$is-calculated',  indicating 
