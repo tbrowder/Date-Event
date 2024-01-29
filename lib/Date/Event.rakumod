@@ -23,8 +23,15 @@ has EType $.type;
 has Date $.date;
 has Date $.date-observed;
 has $.notes;
-has Bool $.is-calculated = False; #= Default is a directed or traditional observed date
+has Bool $.is-calculated = False; #= Default is a directed or 
+                                  #= traditional observed date
+                                  #= (e.g., Christmas, St. Patrick's Day).
 
-method is-calc {
-    $!is-calculated = True
+method is-calculated(Bool $v?) {
+    if $v.defined {
+        $!is-calculated = $v
+    }
+    else {
+        return $!is-calculated
+    }
 }

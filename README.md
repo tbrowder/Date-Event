@@ -46,12 +46,17 @@ DESCRIPTION
         # Many holidays are an exception in that they are calculated
         # based on one or more date criteria or conversion
         # from another calendar (e.g., from Jewish to Gregorian).
-        has Bool $.is-calculated = False; 
+        has Bool $!is-calculated = False; 
     }
 
     #= Enable the user to change the attribute
-    method is-calc {
-        $!is-calculated = True
+    method is-calculated(Bool $v?) {
+        if $v.defined {
+            $!is-calculated = $v
+        }
+        else {
+            return 
+        }
     }
 
 AUTHOR
