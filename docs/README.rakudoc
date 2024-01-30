@@ -7,9 +7,8 @@ B<Date::Event> - Provides a class suitable for use with calendars or any Raku pr
 =head1 SYNOPSIS
 
 =begin code :lang<raku>
-
 use Date::Event;
-
+my %h =
 =end code
 
 =head1 DESCRIPTION
@@ -20,7 +19,7 @@ instances on a C<Date> and is defined as follows:
 
 =begin code
 enum EType (
-    Birth       => 1, 
+    Birth       => 1,
     Christening => 2,
     Baptism     => 3,
     BarMitzvah  => 4,
@@ -42,13 +41,19 @@ class Date::Event {
     has EType $.type;
     has Date $.date;
     has Date $.date-observed;
+    has Bool $.is-calculated;
+
+    # For use with Date::Utils
+    has UInt nth-value;
+    has UInt nth-dow;
+    has UInt nth-dow;
     has $.notes;
 
     # A default event is normally set on a certain date.
     # Many holidays are an exception in that they are calculated
     # based on one or more date criteria or conversion
     # from another calendar (e.g., from Jewish to Gregorian).
-    has Bool $!is-calculated = False; 
+    has Bool $!is-calculated = False;
 }
 
 #= Enable the user to change the attribute

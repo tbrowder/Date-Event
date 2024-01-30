@@ -1,0 +1,21 @@
+check modules, in order
+
+Date::Event
+
+  these two should be very similar in data and class structure and usage:
+
+    Holidays::US::Federal is Date::Event
+
+    Holidays::Miscellaneous is Date::Event
+
+   they should all produce:
+      a hash keyed by data, value is list of Date::Events
+
+
+all should:
+
+  show usage (hash keyed by data, value is list of Date::Events
+
+  show attributes used
+
+use

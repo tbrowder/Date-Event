@@ -10,6 +10,7 @@ SYNOPSIS
 
 ```raku
 use Date::Event;
+my %h =
 ```
 
 DESCRIPTION
@@ -18,7 +19,7 @@ DESCRIPTION
 **Date::Event** is a class that provides basic attributes to describe an event occurring on a particular `Date`. It is suitable for multiple instances on a `Date` and is defined as follows:
 
     enum EType (
-        Birth       => 1, 
+        Birth       => 1,
         Christening => 2,
         Baptism     => 3,
         BarMitzvah  => 4,
@@ -40,13 +41,19 @@ DESCRIPTION
         has EType $.type;
         has Date $.date;
         has Date $.date-observed;
+        has Bool $.is-calculated;
+
+        # For use with Date::Utils
+        has UInt nth-value;
+        has UInt nth-dow;
+        has UInt nth-dow;
         has $.notes;
 
         # A default event is normally set on a certain date.
         # Many holidays are an exception in that they are calculated
         # based on one or more date criteria or conversion
         # from another calendar (e.g., from Jewish to Gregorian).
-        has Bool $!is-calculated = False; 
+        has Bool $!is-calculated = False;
     }
 
     #= Enable the user to change the attribute
