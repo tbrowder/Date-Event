@@ -46,26 +46,24 @@ DESCRIPTION
     );
 
     class Date::Event {
-        has Str $.id;
-        has Str $.name;
-        has Str $.short-name;
+        has Str   $.id;
+        has Str   $.name;
+        has Str   $.short-name;
         has EType $.type;
-        has Date $.date;
-        has Date $.date-observed;
-        has Str $.notes;
-        has Bool $.is-calculated;
+        has Date  $.date;
+        has Date  $.date-observed;
+        has Str   $.notes;
+        has Bool  $.is-calculated;
 
         # For use with Date::Utils:
-        has UInt nth-value;
-        has UInt nth-dow;
-        has UInt nth-month-number;
+        has UInt  $.nth-value;
+        has UInt  $.nth-dow;
+        has UInt  $.nth-month-number;
 
         # A default event is normally set on a certain date.  Many
         # holidays are an exception in that they are calculated based on
         # one or more date criteria or conversion from another calendar
-        # (e.g., from Jewish to Gregorian).
-        has Bool $!is-calculated = False;
-    }
+        # (e.g., from Jewish to Gregorian).  }
 
     #= Enable the user to change the attribute
     method is-calculated(Bool $v?) {
