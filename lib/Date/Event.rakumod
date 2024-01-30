@@ -16,18 +16,27 @@ enum EType (
     Other       => 200,
 );
 
-has $.id = "";
-has Str $.name = "";
-has Str $.short-name = "";
+has Str   $.id             = "";
+has Str   $.name           = "";
+has Str   $.short-name     = "";
 has EType $.type;
-has Date $.date;
-has Date $.date-observed0;
-has Str $.notes = "";
-has Bool $.is-calculated = False; #= Default is a directed or
-                                  #= traditionally observed date
-                                  #= (e.g., St. Patrick's Day).
+has Date  $.date;
+has Date  $.date-observed;
+has Str   $.notes          = "";
+has Bool  $.is-calculated  = False; #= Default is a directed or
+                                    #= traditionally observed date
+                                    #= (e.g., St. Patrick's Day).
 
 method is-calculated(Bool $v?) {
+    if $v.defined {
+        $!is-calculated = $v
+    }
+    else {
+        return $!is-calculated
+    }
+}
+
+method is-calc(Bool $v?) {
     if $v.defined {
         $!is-calculated = $v
     }

@@ -10,7 +10,18 @@ SYNOPSIS
 
 ```raku
 use Date::Event;
-my %h =
+my $year = 2024;
+my %e = get-events(:$year); # OUTPUT: «...hash of hashes of events per Date␤»
+say "Showing events for year $year";
+for %e.keys -> $date {
+    say "  date: $date"; # OUTPUT: «  date: 2024-07-04␤»
+    for %h{$date}.keys -> $id {
+        my $e = %e{$date}{$id};
+        say "    Event '$e.name'"; OUTPUT: «    Birthday␤»
+        last;
+    }
+    last;
+}
 ```
 
 DESCRIPTION
@@ -49,10 +60,10 @@ DESCRIPTION
         has UInt nth-dow;
         has $.notes;
 
-        # A default event is normally set on a certain date.
-        # Many holidays are an exception in that they are calculated
-        # based on one or more date criteria or conversion
-        # from another calendar (e.g., from Jewish to Gregorian).
+        # A default event is normally set on a certain date.  Many
+        # holidays are an exception in that they are calculated based on
+        # one or more date criteria or conversion from another calendar
+        # (e.g., from Jewish to Gregorian).
         has Bool $!is-calculated = False;
     }
 
