@@ -27,6 +27,11 @@ has Bool  $.is-calculated  = False; #= Default is a directed or
                                     #= traditionally observed date
                                     #= (e.g., St. Patrick's Day).
 
+# Additional attributes for use with module 'Date::Utils'"
+has UInt $.nth-value;
+has UInt $.nth-dow;
+has UInt $.nth-month-number;
+
 method is-calculated(Bool $v?) {
     if $v.defined {
         $!is-calculated = $v

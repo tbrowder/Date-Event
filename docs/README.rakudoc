@@ -46,19 +46,19 @@ enum EType (
 );
 
 class Date::Event {
-    has $.id;
-    has $.name;
-    has $.short-name;
+    has Str $.id;
+    has Str $.name;
+    has Str $.short-name;
     has EType $.type;
     has Date $.date;
     has Date $.date-observed;
+    has Str $.notes;
     has Bool $.is-calculated;
 
-    # For use with Date::Utils
+    # For use with Date::Utils:
     has UInt nth-value;
     has UInt nth-dow;
-    has UInt nth-dow;
-    has $.notes;
+    has UInt nth-month-number;
 
     # A default event is normally set on a certain date.  Many
     # holidays are an exception in that they are calculated based on
