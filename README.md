@@ -11,7 +11,8 @@ SYNOPSIS
 ```raku
 use Date::Event;
 my $year = 2024;
-my %e = get-events(:$year); # OUTPUT: «...hash of hashes of events per Date␤»
+my $uid = 'x'; # use the $uid to uniquely identify this set of events
+my %e = get-events(:$year, :$uid); # OUTPUT: «...hash of hashes of events per Date␤»
 say "Showing events for year $year";
 for %e.keys -> $date {
     say "  date: $date"; # OUTPUT: «  date: 2024-07-04␤»

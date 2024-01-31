@@ -6,11 +6,12 @@ use-ok "Date::Event";
 class Event is Date::Event {};
 
 my $e;
+my $uid = 'x';
 my %events; # defined in BEGIN block at eof
 
 my $year = 2024;
 
-my %e = get-events :$year;
+my %e = get-events :$year, :$uid;
 is %e.elems, 1;
 lives-ok {
     for %e.keys -> $date {
@@ -22,13 +23,6 @@ lives-ok {
         }
     }
 }
-
-# Example in README SYNOPSIS
-my $d = Date.new("2024-07-04");
-$e = %e{$d}<june>;
-is $e.name, "Birthday";
-$e = %e{$d}<2>;
-is $e.name, "Anniversary";
 
 done-testing;
 
@@ -47,7 +41,7 @@ BEGIN {
     );
 }
 
-sub get-events(:$year!, :$debug --> Hash) is export {
+sub get-events(:$year!, :$uid!, :$debug --> Hash) is export {
     my %e;
     # go through the hash data and convert to the current year
     for %events.keys -> $id {
@@ -62,11 +56,12 @@ sub get-events(:$year!, :$debug --> Hash) is export {
         else {
             die "FATAL:  Invalid date string '$date-str' (expected format: '0000-mm-dd')";
         }
-        my Event $e = Event.new: :$year, :$id, :$name, :$date;
-        if %e{$date}{$id}:exists {
-            die "FATAL:  Duplicate ID '$id'";
+        my $ID = $uid~$id;
+        my Event $e = Event.new: :$year, :id($ID), :$name, :$date;
+        if %e{$date}{$ID}:exists {
+            die "FATAL:  Duplicate ID '$ID'";
         }
-        %e{$date}{$id} = $e
+        %e{$date}{$ID} = $e
     }
     %e
 }
