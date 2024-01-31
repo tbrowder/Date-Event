@@ -4,6 +4,7 @@ Revision history for Date-Event
 
 0.0.5  2024-01-30T17:18:51-06:00
 
+    - Add a method for a user to distinguish between different Event sets
     - Add back old method 'is-calc' just in case someone was using it
     - Add a real test of the functionality in test 2
     - Improve docs

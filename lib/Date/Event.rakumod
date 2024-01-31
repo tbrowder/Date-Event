@@ -16,6 +16,9 @@ enum EType (
     Other       => 200,
 );
 
+# This id is for use in multiple sets of events:
+has Str   $.uid            = "";
+# This id is for use in a single set of events:
 has Str   $.id             = "";
 has Str   $.name           = "";
 has Str   $.short-name     = "";
