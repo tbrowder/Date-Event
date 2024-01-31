@@ -10,6 +10,18 @@ SYNOPSIS
 
 ```raku
 use Date::Event;
+my $year = 2024;
+my %e = get-events(:$year); # OUTPUT: «...hash of hashes of events per Date␤»
+say "Showing events for year $year";
+for %e.keys -> $date {
+    say "  date: $date"; # OUTPUT: «  date: 2024-07-04␤»
+    for %h{$date}.keys -> $id {
+        my $e = %e{$date}{$id};
+        say "    Event '$e.name'"; OUTPUT: «    Birthday␤»
+        last;
+    }
+    last;
+}
 ```
 
 DESCRIPTION
@@ -18,7 +30,7 @@ DESCRIPTION
 **Date::Event** is a class that provides basic attributes to describe an event occurring on a particular `Date`. It is suitable for multiple instances on a `Date` and is defined as follows:
 
     enum EType (
-        Birth       => 1, 
+        Birth       => 1,
         Christening => 2,
         Baptism     => 3,
         BarMitzvah  => 4,
@@ -34,20 +46,24 @@ DESCRIPTION
     );
 
     class Date::Event {
-        has $.id;
-        has $.name;
-        has $.short-name;
+        has Str   $.id;
+        has Str   $.name;
+        has Str   $.short-name;
         has EType $.type;
-        has Date $.date;
-        has Date $.date-observed;
-        has $.notes;
+        has Date  $.date;
+        has Date  $.date-observed;
+        has Str   $.notes;
+        has Bool  $.is-calculated;
 
-        # A default event is normally set on a certain date.
-        # Many holidays are an exception in that they are calculated
-        # based on one or more date criteria or conversion
-        # from another calendar (e.g., from Jewish to Gregorian).
-        has Bool $!is-calculated = False; 
-    }
+        # For use with Date::Utils:
+        has UInt  $.nth-value;
+        has UInt  $.nth-dow;
+        has UInt  $.nth-month-number;
+
+        # A default event is normally set on a certain date.  Many
+        # holidays are an exception in that they are calculated based on
+        # one or more date criteria or conversion from another calendar
+        # (e.g., from Jewish to Gregorian).  }
 
     #= Enable the user to change the attribute
     method is-calculated(Bool $v?) {

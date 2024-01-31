@@ -2,6 +2,13 @@ Revision history for Date-Event
 
 {{$NEXT}}
 
+0.0.5  2024-01-30T17:18:51-06:00
+
+    - Add back old method 'is-calc' just in case someone was using it
+    - Add a real test of the functionality in test 2
+    - Improve docs
+    - Add new attributes for use with new features of 'Date::Utils'
+
 0.0.4  2024-01-29T15:45:54-06:00
     - Change the Windows test to use zef instead of the broken Windows
         version of prove6
@@ -11,9 +18,9 @@ Revision history for Date-Event
     - Update copyright year in README
 
 0.0.3  2023-03-18T06:11:35-05:00
-    - Add a Boolean attribute, '$is-calculated',  indicating 
+    - Add a Boolean attribute, '$is-calculated',  indicating
       whether the event's date is caclulated or fixed
-      (default: False). Add a method, 'is-calc', for the user 
+      (default: False). Add a method, 'is-calc', for the user
       to change the value of that attribute.
 
 0.0.2  2023-03-13T05:21:23-05:00
