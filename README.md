@@ -13,7 +13,7 @@ use Date::Event;
 my $year = 2024;
 my $uid = 'x'; # use the $uid to uniquely identify this set of events
 my %e = get-events(:$year, :$uid); # OUTPUT: «...hash of hashes of events per Date␤»
-say "Showing events for year $year";
+say "Showing database of events for year $year";
 for %e.keys -> $date {
     say "  date: $date"; # OUTPUT: «  date: 2024-07-04␤»
     for %h{$date}.keys -> $id {
@@ -28,7 +28,7 @@ for %e.keys -> $date {
 DESCRIPTION
 ===========
 
-**Date::Event** is a class that provides basic attributes to describe an event occurring on a particular `Date`. It is suitable for multiple instances on a `Date` and is defined as follows:
+**Date::Event** is a class that provides basic attributes to describe an event occurring on a particular `Date`. It is suitable for multiple instances on a `Date` and is currently defined as follows:
 
     enum EType (
         Birth       => 1,
@@ -75,6 +75,8 @@ DESCRIPTION
             return $!is-calculated
         }
     }
+
+A full example of how to use the module is shown in './t/2-example.t'. Published modules showing similar use are 'Holidays::US:Federal' and 'Holidays::Miscellaneous'. They are special databases that use the 'Date::Event' class to provide a common interface (API) for working with dates. Those modules are being integrated into the next version of published module 'Calendar'.
 
 AUTHOR
 ======

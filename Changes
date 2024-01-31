@@ -1,6 +1,7 @@
 Revision history for Date-Event
 
 {{$NEXT}}
+    - Expand README
 
 0.0.6  2024-01-30T20:10:01-06:00
     - Add :uid to use as a set ID
