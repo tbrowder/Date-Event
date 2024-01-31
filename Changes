@@ -1,6 +1,7 @@
 Revision history for Date-Event
 
 {{$NEXT}}
+    - Add :uid to use as a set ID
 
 0.0.5  2024-01-30T17:18:51-06:00
 
