@@ -1,0 +1,1 @@
+"my %events = %(\n    june => {\n        name => \"Birthday\",\n        date => \"0000-07-04\",\n        short-name => \"\",\n    },\n    2 => {\n        name => \"Anniversary\",\n        date => \"0000-07-04\",\n        short-name => \"\",\n    },\n);\n"

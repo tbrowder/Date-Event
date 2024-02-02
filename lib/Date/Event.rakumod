@@ -17,7 +17,7 @@ enum EType is export (
 role Date::Event {
 
     # This id is for use in multiple sets of events:
-    has Str   $.uid            = "";
+    has Str   $.set-uid        = "";
     # This id is for use in a single set of events:
     has Str   $.id             = "";
     has Str   $.name           = "";
@@ -44,7 +44,16 @@ role Date::Event {
         }
     }
 
-    proto method get-events(:$year, :$uid --> Hash) {*};
+    # in DB role: proto method get-events(:$year, :$set-id --> Hash of Date) {*};
+
+    #| This method combines the $set-id with the event's $id to yield 
+    #| its $gid (global ID)	
+    method make-gid(:$set-id!, :$id!) {
+        $id ~ '|' ~ $set-id
+    }
+    method split-gid(:$gid! --> List) {
+        $gid.split: '|';
+    }
 
 }
 

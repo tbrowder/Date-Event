@@ -6,6 +6,7 @@
   "build-depends": [
   ],
   "depends": [
+    "JSON::Fast",
     "UUID::V4"
   ],
   "description": "Provides a class suitable for use with calendars or any Raku program associated with the Raku Date type",
@@ -13,6 +14,7 @@
   "name": "Date::Event",
   "perl": "6.d",
   "provides": {
+    "Date::DB": "lib/Date/DB.rakumod",
     "Date::Event": "lib/Date/Event.rakumod"
   },
   "resources": [
