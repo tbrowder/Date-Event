@@ -1,6 +1,4 @@
-unit class Date::Event;
-
-enum EType (
+enum EType is export (
     Birth       => 1,
     Christening => 2,
     Baptism     => 3,
@@ -16,24 +14,41 @@ enum EType (
     Other       => 200,
 );
 
-# This id is for use in multiple sets of events:
-has Str   $.uid            = "";
-# This id is for use in a single set of events:
-has Str   $.id             = "";
-has Str   $.name           = "";
-has Str   $.short-name     = "";
-has EType $.type;
-has Date  $.date;
-has Date  $.date-observed;
-has Str   $.notes          = "";
-has Bool  $.is-calculated  = False; #= Default is a directed or
-                                    #= traditionally observed date
-                                    #= (e.g., St. Patrick's Day).
+role Date::Event {
 
-# Additional attributes for use with module 'Date::Utils'"
-has UInt $.nth-value;
-has UInt $.nth-dow;
-has UInt $.nth-month-number;
+    # This id is for use in multiple sets of events:
+    has Str   $.uid            = "";
+    # This id is for use in a single set of events:
+    has Str   $.id             = "";
+    has Str   $.name           = "";
+    has Str   $.short-name     = "";
+    has EType $.type;
+    has Date  $.date;
+    has Date  $.date-observed;
+    has Str   $.notes          = "";
+    has Bool  $.is-calculated  = False; #= Default is a directed or
+                                        #= traditionally observed date
+                                        #= (e.g., St. Patrick's Day).
+
+    # Additional attributes for use with module 'Date::Utils'"
+    has UInt $.nth-value;
+    has UInt $.nth-dow;
+    has UInt $.nth-month-number;
+
+    method is-calculated(Bool $v?) {
+        if $v.defined {
+            $!is-calculated = $v
+        }
+        else {
+            return $!is-calculated
+        }
+    }
+
+    proto method get-events(:$year, :$uid --> Hash) {*};
+
+}
+
+=finish
 
 method is-calculated(Bool $v?) {
     if $v.defined {

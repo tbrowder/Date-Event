@@ -6,6 +6,7 @@
   "build-depends": [
   ],
   "depends": [
+    "UUID::V4"
   ],
   "description": "Provides a class suitable for use with calendars or any Raku program associated with the Raku Date type",
   "license": "Artistic-2.0",
@@ -18,7 +19,7 @@
   ],
   "source-url": "https://github.com/tbrowder/Date-Event.git",
   "tags": [
-    "date day calendar"
+    "date day event calendar"
   ],
   "test-depends": [
   ],
