@@ -1,3 +1,8 @@
+unit class Date::Event;
+
+use JSON::Fast;
+use Date::Utilities;
+
 enum EType is export (
     Birth       => 1,
     Christening => 2,
@@ -14,47 +19,63 @@ enum EType is export (
     Other       => 200,
 );
 
-role Date::Event {
+# This id is for use in multiple sets of events:
+has Str   $.set-uid        = "";
+# This id is for use in a single set of events:
+has Str   $.id             = "";
+has Str   $.name           = "";
+has Str   $.short-name     = "";
+has EType $.type;
+has Date  $.date;
+has Date  $.date-observed;
+has Str   $.notes          = "";
+has Bool  $.is-calculated  = False; #= Default is a directed or
+#= traditionally observed date
+#= (e.g., St. Patrick's Day).
 
-    # This id is for use in multiple sets of events:
-    has Str   $.set-uid        = "";
-    # This id is for use in a single set of events:
-    has Str   $.id             = "";
-    has Str   $.name           = "";
-    has Str   $.short-name     = "";
-    has EType $.type;
-    has Date  $.date;
-    has Date  $.date-observed;
-    has Str   $.notes          = "";
-    has Bool  $.is-calculated  = False; #= Default is a directed or
-                                        #= traditionally observed date
-                                        #= (e.g., St. Patrick's Day).
+# Additional attributes for use with module 'Date::Utils'"
+has UInt $.nth-value;
+has UInt $.nth-dow;
+has UInt $.nth-month-number;
 
-    # Additional attributes for use with module 'Date::Utils'"
-    has UInt $.nth-value;
-    has UInt $.nth-dow;
-    has UInt $.nth-month-number;
-
-    method is-calculated(Bool $v?) {
-        if $v.defined {
-            $!is-calculated = $v
-        }
-        else {
-            return $!is-calculated
-        }
+method is-calculated(Bool $v?) {
+    if $v.defined {
+        $!is-calculated = $v
     }
-
-    # in DB role: proto method get-events(:$year, :$set-id --> Hash of Date) {*};
-
-    #| This method combines the $set-id with the event's $id to yield 
-    #| its $gid (global ID)	
-    method make-gid(:$set-id!, :$id!) {
-        $id ~ '|' ~ $set-id
+    else {
+        return $!is-calculated
     }
-    method split-gid(:$gid! --> List) {
-        $gid.split: '|';
-    }
+}
 
+method attr-info(--> Hash) is export {
+    my @attrs = self.^attributes;
+    my @names;
+    my @values;
+    my %h;
+    for @attrs.kv -> $i, $a {
+        my $name = $a.name;
+        $name ~~ s/\S\S//;
+        @names.push: $name;
+        %h{$i}<name> = $name;
+
+        my $value = $a.get_value: self;
+        @values.push: $value;
+        %h{$i}<value> = $value;
+    }
+    %h
+}
+
+
+# in DB role: proto method get-events(:$year, :$set-id --> Hash of Date) {*};
+# in DB role: proto method load-data() {*};
+
+#| This method combines the $set-id with the event's $id to yield its
+#| $gid (global ID)
+method make-gid(:$set-id!, :$id!) {
+    $id ~ '|' ~ $set-id
+}
+method split-gid(:$gid! --> List) {
+    $gid.split: '|';
 }
 
 =finish

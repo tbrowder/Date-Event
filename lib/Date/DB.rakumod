@@ -1,4 +1,7 @@
-unit role Date::DB;
+unit class Date::DB;
+
+use Date::Event;
+use Date::Utilities;
 
 has $.path-to-module is required;
 has $.data-hash-name is required;
@@ -7,7 +10,7 @@ has %.data;
 has Date %.dates;
 
 =begin comment
-subset TWEAK {
+submethod TWEAK {
     # read the hash of data
     use lib $.path-to-module.dirname;
     %!data = $!data-hash-name;
@@ -17,4 +20,5 @@ subset TWEAK {
 
 proto method get-events(:$year, :$set-id --> Hash of Date) {*};
 proto method events(:$year, :$set-id --> Hash of Date) {*};
-
+#proto method load-data(:$year, :$set-id) {*};
+#proto method load-data() {*};

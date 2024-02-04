@@ -1,5 +1,5 @@
-unit module Data;
-my %events is export = %(
+unit module BdayData;
+our %events is export = %(
     june => {
         name => "Birthday",
         date => "0000-07-04",
