@@ -3,7 +3,7 @@
 NAME
 ====
 
-**Date::Event** - Provides a class suitable for use with calendars or any Raku program associated with the Raku Date type
+**Date::Event** - Provides a class suitable for use with calendars or any program using the Raku Date type
 
 **WARNING** This version introduces API 2 and backward compatibility with previous versions is not tested.
 
