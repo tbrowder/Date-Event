@@ -16,7 +16,6 @@
   "provides": {
     "Date::DB": "lib/Date/DB.rakumod",
     "Date::Event": "lib/Date/Event.rakumod",
-    "Date::Roles": "lib/Date/Roles.rakumod",
     "Date::Utilities": "lib/Date/Utilities.rakumod"
   },
   "resources": [

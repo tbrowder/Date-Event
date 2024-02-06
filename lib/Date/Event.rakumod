@@ -4,6 +4,7 @@ use JSON::Fast;
 use Date::Utilities;
 
 enum EType is export (
+    Unknown     => 0,
     Birth       => 1,
     Christening => 2,
     Baptism     => 3,
@@ -25,7 +26,7 @@ has Str   $.set-uid        = "";
 has Str   $.id             = "";
 has Str   $.name           = "";
 has Str   $.short-name     = "";
-has EType $.type;
+has UInt  $.Etype          = 0;
 has Date  $.date;
 has Date  $.date-observed;
 has Str   $.notes          = "";
@@ -37,6 +38,15 @@ has Bool  $.is-calculated  = False; #= Default is a directed or
 has UInt $.nth-value;
 has UInt $.nth-dow;
 has UInt $.nth-month-number;
+
+method etype(UInt $v?) {
+    if $v.defined {
+        return EType($v)
+    }
+    else {
+        return EType(self.Etype)
+    }
+}
 
 method is-calculated(Bool $v?) {
     if $v.defined {

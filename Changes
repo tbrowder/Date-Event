@@ -6,6 +6,8 @@ Revision history for Date-Event
       + requires a method to provide a hash of hashes of
         unique objects derived from this role
       + requires a method to merge hashes of unique objects
+      + more test
+      + EType and enums handled properly
       
 
 0.0.7  2024-01-31T08:39:28-06:00
