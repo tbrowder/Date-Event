@@ -5,7 +5,7 @@ use Date::Utilities;
 
 enum EType is export (
     Unknown     => 0,
-    Birth       => 11,
+    Birth       => 1,
     Christening => 2,
     Baptism     => 3,
     BarMitzvah  => 4,
@@ -15,32 +15,42 @@ enum EType is export (
     Anniversary => 8,
     Retirement  => 9,
     Death       => 10,
-    Birthday    => 1,
+    Birthday    => 11,
 
     Holiday     => 100,
     Other       => 200,
 );
 
 # This id is for use in multiple sets of events:
-has Str   $.set-uid        = "";
+has Str   $.set-id         = "";
 # This id is for use in a single set of events:
 has Str   $.id             = "";
 has Str   $.name           = "";
 has Str   $.short-name     = "";
-has UInt  $.Etype          = 0;
+has       $.Etype          = 0;
 has Date  $.date;
 has Date  $.date-observed;
 has Str   $.notes          = "";
 has Bool  $.is-calculated  = False; #= Default is a directed or
-#= traditionally observed date
-#= (e.g., St. Patrick's Day).
+                                    #= traditionally observed date
+                                    #= (e.g., St. Patrick's Day).
 
 # Additional attributes for use with module 'Date::Utils'"
 has UInt $.nth-value;
 has UInt $.nth-dow;
 has UInt $.nth-month-number;
 
-multi method etype(Str $v?) {
+submethod TWEAK {
+    if $!Etype ~~ Str {
+        $!Etype = self.etype($!Etype)
+    }
+    else {
+        $!Etype = self.etype($!Etype)
+    }
+
+}
+
+multi method etype(Str $v? --> UInt) {
     my %m = EType.enums;
     if $v.defined {
         return %m{$v}
@@ -50,7 +60,7 @@ multi method etype(Str $v?) {
     }
 }
 
-multi method etype(UInt $v?) {
+multi method etype(UInt $v? --> EType) {
     if $v.defined {
         return EType($v)
     }

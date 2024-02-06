@@ -19,14 +19,13 @@ is $o.^api, 2, "API is now 2";
 use-ok "Date::Event";
 use-ok "Date::DB";
 use-ok "Date::Utilities";
- 
+
 is $o.etype, "Holiday", "Holiday type 100 was set on instantiation";
 is $o.etype(200), "Other", "name of a given EType number 200";
-is $o.etype('Birth'), 11, "number value given EType name 'Birth'";
-is $o.etype('Birthday'), 1, "number value given EType name 'Birthday'";
-is $o.etype(11), "Birth", "";
-is $o.etype(1), "Birthday", "";
-
+is $o.etype('Birth'), 1, "number value given EType name 'Birth'";
+is $o.etype('Birthday'), 11, "number value given EType name 'Birthday'";
+is $o.etype(1), "Birth", "";
+is $o.etype(11), "Birthday", "";
 
 my %h = $o.attr-info;
 

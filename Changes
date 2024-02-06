@@ -2,17 +2,16 @@ Revision history for Date-Event
 
 {{$NEXT}}
     - New API 2:
-      + converted to a role
       + requires a method to provide a hash of hashes of
         unique objects derived from this role
       + requires a method to merge hashes of unique objects
-      + more test
+      + more tests added
       + EType and enums handled properly
-      + method etype($v?) added to:
+      + multi method etype($v?) added to:
         - show enum EType name for an input enum EType value
-        - without an arg, shows enum EType name of the Etype 
-            number set in the object's $!Etype attr
-      + changed enum ETtype Birth to value 11
+        - show enum EType number value with an input enum EType name
+        - without an arg, shows those same outputs
+            but for those of the object instance
       + added enum ETtype Birthday with value 11
         - total of 14 EType enums
 
