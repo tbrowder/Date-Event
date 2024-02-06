@@ -11,19 +11,22 @@ my $o;
 my $year = 2024;
 my $site-id = uuid-v4;
 
-$o = Date::Event.new: :$year, :$site-id, :etype(100);
+$o = Date::Event.new: :$year, :$site-id, :Etype(100);
 isa-ok $o, Date::Event;
+
+is $o.^api, 2, "API is now 2";
 
 use-ok "Date::Event";
 use-ok "Date::DB";
 use-ok "Date::Utilities";
  
-is $o.etype, 100; #, Holiday.value;
-my $e = $o.etype;
-is $e, 100; #, Holiday.value;
+is $o.etype, "Holiday", "Holiday type 100 was set on instantiation";
+is $o.etype(200), "Other", "name of a given EType number 200";
+is $o.etype('Birth'), 11, "number value given EType name 'Birth'";
+is $o.etype('Birthday'), 1, "number value given EType name 'Birthday'";
+is $o.etype(11), "Birth", "";
+is $o.etype(1), "Birthday", "";
 
-
-#cmp-ok $e, '~~', EType::Holiday.value, "Holiday"; #EType<Holiday>; #.value;
 
 my %h = $o.attr-info;
 

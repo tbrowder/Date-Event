@@ -17,7 +17,7 @@ is $o.etype(200), "Other", "name of a given EType number 200";
 my $m = EType.enums;
 isa-ok $m, Map;
 is $m<Unknown>, 0, "created an enums map";
-is $m.elems, 13, "there are 13 enums as expected";
+is $m.elems, 14, "there are 14 enums as expected";
 is $m<Holiday>, 100, "value 100 is a Holiday event";
 
 is $o.etype, "Unknown";

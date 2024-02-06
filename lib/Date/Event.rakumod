@@ -1,11 +1,11 @@
-unit class Date::Event;
+unit class Date::Event:api<2>;
 
 use JSON::Fast;
 use Date::Utilities;
 
 enum EType is export (
     Unknown     => 0,
-    Birth       => 1,
+    Birth       => 11,
     Christening => 2,
     Baptism     => 3,
     BarMitzvah  => 4,
@@ -15,6 +15,7 @@ enum EType is export (
     Anniversary => 8,
     Retirement  => 9,
     Death       => 10,
+    Birthday    => 1,
 
     Holiday     => 100,
     Other       => 200,
@@ -39,7 +40,17 @@ has UInt $.nth-value;
 has UInt $.nth-dow;
 has UInt $.nth-month-number;
 
-method etype(UInt $v?) {
+multi method etype(Str $v?) {
+    my %m = EType.enums;
+    if $v.defined {
+        return %m{$v}
+    }
+    else {
+        return %m{self.Etype}
+    }
+}
+
+multi method etype(UInt $v?) {
     if $v.defined {
         return EType($v)
     }

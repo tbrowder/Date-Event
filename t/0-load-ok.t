@@ -12,8 +12,7 @@ use-ok "Date::DB";
 use-ok "Date::Utilities";
 
 my $site-id = uuid-v4;
-is is-uuid-v4($site-id), True, "is uuid-v4";;
-
+is is-uuid-v4($site-id), True, "is uuid-v4";
 
 done-testing;
 

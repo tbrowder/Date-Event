@@ -8,6 +8,14 @@ Revision history for Date-Event
       + requires a method to merge hashes of unique objects
       + more test
       + EType and enums handled properly
+      + method etype($v?) added to:
+        - show enum EType name for an input enum EType value
+        - without an arg, shows enum EType name of the Etype 
+            number set in the object's $!Etype attr
+      + changed enum ETtype Birth to value 11
+      + added enum ETtype Birthday with value 11
+        - total of 14 EType enums
+
       
 
 0.0.7  2024-01-31T08:39:28-06:00
