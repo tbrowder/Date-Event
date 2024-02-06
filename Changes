@@ -2,9 +2,6 @@ Revision history for Date-Event
 
 {{$NEXT}}
     - New API 2:
-      + requires a method to provide a hash of hashes of
-        unique objects derived from this role
-      + requires a method to merge hashes of unique objects
       + more tests added
       + EType and enums handled properly
       + multi method etype($v?) added to:
@@ -15,7 +12,7 @@ Revision history for Date-Event
       + added enum ETtype Birthday with value 11
         - total of 14 EType enums
 
-      
+
 
 0.0.7  2024-01-31T08:39:28-06:00
     - Expand README
