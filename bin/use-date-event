@@ -1,0 +1,33 @@
+#!/usr/bin/env raku
+
+use Date::DB;
+use Date::Utilities;
+use Date::Event;
+
+if not @*ARGS.elems {
+    print qq:to/HERE/;
+    Usage: {$*PROGRAM.basename} input | example [options]
+
+    Modes:
+      input=X     - where X is the input file
+      example[=X] - where X is the output type [default: JSON]
+
+    Converts the input file to a JSON file. The input file
+    must be one of two types: 
+      1. rakumod with a single hash defined
+      2. csv
+      3. JSON
+
+    All types must have all the fields needed for all the attributes used
+    by the Date::Event or for the child class derived from it.
+
+    The input file type is expected to be identified by its suffix (.rakumod, 
+    .csv, or .json).
+    HERE
+
+    exit;
+}
+	
+my $de = Date::Event.new: :year(2024);
+
+
