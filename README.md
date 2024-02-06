@@ -63,7 +63,6 @@ DESCRIPTION
         else {
             $!Etype = self.etype($!Etype)
         }
-
     }
 
     multi method etype(Str $v? --> UInt) {
@@ -101,7 +100,7 @@ DESCRIPTION
         }
     }
 
-A full example of how to use the module is shown in './t/2-example.t'. Published modules showing similar use are 'Holidays::US:Federal' and 'Holidays::Miscellaneous'. They are special databases that use the 'Date::Event' class to provide a common interface (API) for working with dates. Those modules are being integrated into the next version of published module 'Calendar'.
+A an example of how to use the module is shown in './t/2-example.t'. Published modules showing similar use are 'Holidays::US:Federal' and 'Holidays::Miscellaneous'. They include special databases that use the 'Date::Event' class to provide a common interface (API) for working with dates. Those modules are being integrated into the next version of published module 'Calendar'.
 
 AUTHOR
 ======
