@@ -41,13 +41,7 @@ has UInt $.nth-dow;
 has UInt $.nth-month-number;
 
 submethod TWEAK {
-    if $!Etype ~~ Str {
-        $!Etype = self.etype($!Etype)
-    }
-    else {
-        $!Etype = self.etype($!Etype)
-    }
-
+    $!Etype = self.etype($!Etype)
 }
 
 multi method etype(Str $v? --> UInt) {

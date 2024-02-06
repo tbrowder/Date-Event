@@ -2,7 +2,7 @@ Revision history for Date-Event
 
 {{$NEXT}}
     - New API 2:
-      + more tests added
+      + More tests added
       + EType and enums handled properly
       + multi method etype($v?) added to:
         - show enum EType name for an input enum EType value
@@ -11,7 +11,8 @@ Revision history for Date-Event
             but for those of the object instance
       + added enum ETtype Birthday with value 11
         - total of 14 EType enums
-
+      + Improved README
+      + Added TWEAK to properly handle $!Etype with .new
 
 
 0.0.7  2024-01-31T08:39:28-06:00

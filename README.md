@@ -15,7 +15,11 @@ use Date::Event;
 
 my $date = Date.new: :year(2024), :month(12), :day(31);
 
-my $e = Date::Event.new: :$date, :Etype<Birthday>;
+# Enter an Etype with a known enum EType name:
+my $e  = Date::Event.new: :$date, :Etype<Birthday>;
+
+# Enter an Etype with a known enum EType number
+my $e2 = Date::Event.new: :$date, :Etype(11);
 ```
 
 DESCRIPTION
@@ -59,12 +63,7 @@ DESCRIPTION
     has UInt  $.nth-month-number;
 
     submethod TWEAK {
-        if $!Etype ~~ Str {
-            $!Etype = self.etype($!Etype)
-        }
-        else {
-            $!Etype = self.etype($!Etype)
-        }
+        $!Etype = self.etype($!Etype)
     }
 
     multi method etype(Str $v? --> UInt) {
