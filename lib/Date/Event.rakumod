@@ -1,4 +1,4 @@
-unit class Date::Event:api<2>;
+unit class Date::Event;
 
 use JSON::Fast;
 use Date::Utilities;

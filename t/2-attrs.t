@@ -9,12 +9,10 @@ use lib "data";
 
 my $o;
 my $year = 2024;
-my $site-id = uuid-v4;
+my $set-id = uuid-v4;
 
-$o = Date::Event.new: :$year, :$site-id, :Etype(100);
+$o = Date::Event.new: :$year, :$set-id, :Etype(100);
 isa-ok $o, Date::Event;
-
-is $o.^api, 2, "API is now 2";
 
 use-ok "Date::Event";
 use-ok "Date::DB";
