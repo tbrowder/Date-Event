@@ -3,9 +3,9 @@
 NAME
 ====
 
-**Date::Event** - Provides a class suitable for use with calendars or any program using the Raku Date type
+**Date::Event** - Provides a class suitable for use with calendars or any program using the Raku `Date` type
 
-**WARNING**: This version introduces API 2 and backward compatibility with previous versions is not tested.
+**WARNING**: This version introduces possibly breaking changes and backward compatibility with previous versions is not tested.
 
 SYNOPSIS
 ========
@@ -27,7 +27,7 @@ DESCRIPTION
 
 **Date::Event** is a class that provides basic attributes to describe an event occurring on a particular `Date`. It is suitable for multiple instances on a `Date` and is currently defined as follows:
 
-    unit class Date::Event:api<2>;
+    unit class Date::Event;
 
     enum EType is export (
         Unknown     => 0,
@@ -101,7 +101,7 @@ DESCRIPTION
         }
     }
 
-A an example of how to use the module is shown in './t/2-example.t'. Published modules showing similar use are 'Holidays::US:Federal' and 'Holidays::Miscellaneous'. They include special databases that use the 'Date::Event' class to provide a common interface (API) for working with dates. Those modules are being integrated into the next version of published module 'Calendar'.
+Published modules showing similar use are 'Holidays::US:Federal' and 'Holidays::Miscellaneous'. They include special databases that use the 'Date::Event' class to provide a common interface (API) for working with dates. Those modules are being integrated into the next version of published module 'Calendar'.
 
 AUTHOR
 ======

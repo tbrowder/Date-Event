@@ -6,9 +6,9 @@ use UUID::V4;
 
 my $o;
 my $year = 2024;
-my $site-id = uuid-v4;
+my $set-id = uuid-v4;
 
-$o = Date::Event.new: :$year, :$site-id;
+$o = Date::Event.new: :$year, :$set-id;
 isa-ok $o, Date::Event;
 
 is $o.etype, "Unknown", "default Etype: Unknown";
