@@ -1,6 +1,8 @@
 Revision history for Date-Event
 
 {{$NEXT}}
+
+0.0.10  2024-02-16T12:54:28-06:00
     - Add 'Astro' enum with value 150
     - Add lat/lon attributes
     - Add methods to set/read lat/lon
