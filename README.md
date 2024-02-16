@@ -5,8 +5,6 @@ NAME
 
 **Date::Event** - Provides a class suitable for use with calendars or any program using the Raku `Date` type
 
-**WARNING**: This version introduces possibly breaking changes and backward compatibility with previous versions is not tested.
-
 SYNOPSIS
 ========
 
@@ -44,6 +42,7 @@ DESCRIPTION
         Birthday    => 11,
 
         Holiday     => 100,
+        Astro       => 150,
         Other       => 200,
     );
 
@@ -61,6 +60,10 @@ DESCRIPTION
     has UInt  $.nth-value;
     has UInt  $.nth-dow;
     has UInt  $.nth-month-number;
+
+    # Attributes for Astro events:
+    has Numeric $.lat where {  -90 <= $_ <=  90 };
+    has Numeric $.lon where { -180 <= $_ <= 180 };
 
     submethod TWEAK {
         $!Etype = self.etype($!Etype)
@@ -82,6 +85,24 @@ DESCRIPTION
         }
         else {
             return EType(self.Etype)
+        }
+    }
+
+    method lat(Numeric $v?) {
+        if $v.defined {
+            $!lat = $v
+        }
+        else {
+            return $!lat
+        }
+    }
+
+    method lon(Numeric $v?) {
+        if $v.defined {
+            $!lon = $v
+        }
+        else {
+            return $!lon
         }
     }
 

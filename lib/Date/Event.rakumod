@@ -18,6 +18,8 @@ enum EType is export (
     Birthday    => 11,
 
     Holiday     => 100,
+    Astro       => 150, # this event depends on geographic location
+                        # and local UTC offset
     Other       => 200,
 );
 
@@ -39,6 +41,10 @@ has Bool  $.is-calculated  = False; #= Default is a directed or
 has UInt $.nth-value;
 has UInt $.nth-dow;
 has UInt $.nth-month-number;
+
+# Additional attributes for Astro events
+has Numeric $.lat where {  -90 <= $_ <=  90 };
+has Numeric $.lon where { -180 <= $_ <= 180 };
 
 submethod TWEAK {
     $!Etype = self.etype($!Etype)
@@ -63,7 +69,26 @@ multi method etype(UInt $v? --> EType) {
     }
 }
 
+method lat(Numeric $v?) {
+    if $v.defined {
+        $!lat = $v
+    }
+    else {
+        return $!lat
+    }
+}
+
+method lon(Numeric $v?) {
+    if $v.defined {
+        $!lon = $v
+    }
+    else {
+        return $!lon
+    }
+}
+
 method is-calculated(Bool $v?) {
+    # for holidays that are calculated
     if $v.defined {
         $!is-calculated = $v
     }
