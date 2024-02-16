@@ -4,9 +4,6 @@
 
 B<Date::Event> - Provides a class suitable for use with calendars or any program using the Raku C<Date> type
 
-B<WARNING>: This version introduces possibly breaking changes 
-and backward compatibility with previous versions is not tested.
-
 =head1 SYNOPSIS
 
 =begin code :lang<raku>
@@ -45,6 +42,7 @@ enum EType is export (
     Birthday    => 11,
 
     Holiday     => 100,
+    Astro       => 150,
     Other       => 200,
 );
 
@@ -62,6 +60,10 @@ has Bool  $.is-calculated           = False;
 has UInt  $.nth-value;
 has UInt  $.nth-dow;
 has UInt  $.nth-month-number;
+
+# Attributes for Astro events:
+has Numeric $.lat where {  -90 <= $_ <=  90 };
+has Numeric $.lon where { -180 <= $_ <= 180 };
 
 submethod TWEAK {
     $!Etype = self.etype($!Etype)
@@ -83,6 +85,24 @@ multi method etype(UInt $v? --> EType) {
     }
     else {
         return EType(self.Etype)
+    }
+}
+
+method lat(Numeric $v?) {
+    if $v.defined {
+        $!lat = $v
+    }
+    else {
+        return $!lat
+    }
+}
+
+method lon(Numeric $v?) {
+    if $v.defined {
+        $!lon = $v
+    }
+    else {
+        return $!lon
     }
 }
 
