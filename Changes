@@ -1,6 +1,8 @@
 Revision history for Date-Event
 
 {{$NEXT}}
+
+0.0.11  2024-02-19T08:17:52-06:00
     - Add attribute for all events: DateTime $.time
       + add a test for its type
       + list it README
