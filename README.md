@@ -62,8 +62,9 @@ DESCRIPTION
     has UInt  $.nth-month-number;
 
     # Attributes for Astro events:
-    has Numeric $.lat where {  -90 <= $_ <=  90 };
-    has Numeric $.lon where { -180 <= $_ <= 180 };
+    has Numeric  $.lat where {  -90 <= $_ <=  90 };
+    has Numeric  $.lon where { -180 <= $_ <= 180 };
+    has DateTime $.time;
 
     submethod TWEAK {
         $!Etype = self.etype($!Etype)

@@ -24,6 +24,7 @@ is $o.etype('Birth'), 1, "number value given EType name 'Birth'";
 is $o.etype('Birthday'), 11, "number value given EType name 'Birthday'";
 is $o.etype(1), "Birth", "";
 is $o.etype(11), "Birthday", "";
+isa-ok $o.time, DateTime;
 
 my %h = $o.attr-info;
 

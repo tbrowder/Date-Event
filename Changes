@@ -1,6 +1,9 @@
 Revision history for Date-Event
 
 {{$NEXT}}
+    - Add attribute for all events: DateTime $.time
+      + add a test for its type
+      + list it README
 
 0.0.10  2024-02-16T12:54:28-06:00
     - Add 'Astro' enum with value 150
