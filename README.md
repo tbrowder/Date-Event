@@ -17,7 +17,7 @@ my $date = Date.new: :year(2024), :month(12), :day(31);
 my $e  = Date::Event.new: :$date, :Etype<Birthday>;
 
 # Enter an Etype with a known enum EType number
-my $e2 = Date::Event.new: :$date, :Etype(11);
+my $e2 = Date::Event.new: :$date, :Etype(12); # Liturgy (e.g., Easter)
 ```
 
 DESCRIPTION
@@ -40,6 +40,7 @@ DESCRIPTION
         Retirement  => 9,
         Death       => 10,
         Birthday    => 11,
+        Liturgy     => 12,
 
         Holiday     => 100,
         Astro       => 150,

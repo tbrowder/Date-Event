@@ -16,6 +16,7 @@ enum EType is export (
     Retirement  => 9,
     Death       => 10,
     Birthday    => 11,
+    Liturgy     => 12,  # event related to worship, e.g, Easter
 
     Holiday     => 100,
     Astro       => 150, # this event depends on geographic location
