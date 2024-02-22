@@ -1,6 +1,8 @@
 Revision history for Date-Event
 
 {{$NEXT}}
+
+0.0.12  2024-02-22T06:38:36-06:00
     - Add EType Liturgy => 12
       + add a test for its type
       + list it in README
