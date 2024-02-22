@@ -16,8 +16,9 @@ is $o.etype(200), "Other", "name of a given EType number 200";
 is $o.etype(150), "Astro", "name of a given EType number 200";
 is $o.etype(12), "Liturgy", "name of a given EType number 12";
 
-cmp-ok $o.etype, '~~', Unknown, "enums smart match";
-cmp-ok $o.Etype, '~~', Unknown, "enums smart match";
+$o = Date::Event.new: :$year, :name<Easter>, :Etype(12);
+cmp-ok $o.etype, '~~', Liturgy, "enums smart match";
+is $o.etype, "Liturgy", "can use literal name of .etype";
 
 my $m = EType.enums;
 isa-ok $m, Map;
@@ -25,7 +26,6 @@ is $m<Unknown>, 0, "created an enums map";
 is $m.elems, 16, "there are 16 enums as expected";
 is $m<Holiday>, 100, "value 100 is a Holiday event";
 
-is $o.etype, "Unknown";
 
 for $m.kv -> $k, $v {
     isa-ok $k, Str;

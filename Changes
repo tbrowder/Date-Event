@@ -1,12 +1,15 @@
 Revision history for Date-Event
 
 {{$NEXT}}
-    - Add EType Liturgy
+    - Add EType Liturgy => 12
+      + add a test for its type
+      + list it in README
+      + improve README
 
 0.0.11  2024-02-19T08:17:52-06:00
     - Add attribute for all events: DateTime $.time
       + add a test for its type
-      + list it README
+      + list it in README
 
 0.0.10  2024-02-16T12:54:28-06:00
     - Add 'Astro' enum with value 150

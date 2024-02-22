@@ -15,7 +15,12 @@ my $date = Date.new: :year(2024), :month(12), :day(31);
 my $e  = Date::Event.new: :$date, :Etype<Birthday>;
 
 # Enter an Etype with a known enum EType number
-my $e2 = Date::Event.new: :$date, :Etype(12); # Liturgy (e.g., Easter)
+my $e2 = Date::Event.new: :$date, :name<Easter>,:Etype(12); # Liturgy
+
+# Smart match on the enum attribute
+if $e2.Etype ~~ Liturgy {
+    say $e2.name; # OUTPUT: «Easter␤»
+}
 =end code
 
 =head1 DESCRIPTION
